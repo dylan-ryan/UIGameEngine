@@ -12,6 +12,8 @@ public class UIManager : MonoBehaviour
     public Slider redSlider;
     public Slider greenSlider;
     public Slider blueSlider;
+    public Slider alphaSlider;
+    public GameObject toggleImage;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,22 +50,23 @@ public class UIManager : MonoBehaviour
         text.GetComponent<TextMeshProUGUI>().text = score.ToString("N0");
     }
 
-    public void ColorChange(string color)
+    public void ColorChange()
     {
-        Color currentColor = RGBImage.GetComponent<Image>().color;
-        if (color == "red")
-        {
-            RGBImage.GetComponent<Image>().color = Color.Lerp(currentColor, Color.red, redSlider.value / 100);
-        }        
-        if (color == "green")
-        {
-            RGBImage.GetComponent<Image>().color = Color.Lerp(currentColor, Color.green, greenSlider.value / 100);
-        }
-        if (color == "blue")
-        {
-            RGBImage.GetComponent<Image>().color = Color.Lerp(currentColor, Color.red, blueSlider.value / 100);
-        }
+
+            RGBImage.GetComponent<Image>().color = new Color(redSlider.value, greenSlider.value, blueSlider.value, alphaSlider.value);
 
 
+    }
+
+    public void OnOff()
+    {
+        if(toggleImage.activeSelf == false)
+        {
+            toggleImage.SetActive(true);
+        }
+        else if(toggleImage.activeSelf == true)
+        {
+            toggleImage.SetActive(false);
+        }
     }
 }
