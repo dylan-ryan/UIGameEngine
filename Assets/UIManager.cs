@@ -27,6 +27,11 @@ public class UIManager : MonoBehaviour
         
     }
 
+    public void DropDown()
+    {
+
+    }
+
     public void QuitApp()
     {
         Application.Quit();
